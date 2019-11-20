@@ -7,7 +7,7 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
   // add NgbAlertConfig  to the component providers
   providers: [NgbAlertConfig]
 })
-export class WarningAlert {
+export class WarningAlertComponent {
   @Input() public alerts: Array<string> = [];
 
   constructor(alertConfig: NgbAlertConfig) {
