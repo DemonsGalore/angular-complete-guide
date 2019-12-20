@@ -9,12 +9,12 @@
         <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a>
       </li>
       <li class="nav-item" ngbDropdown>
-        <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown" role="button">
+        <a class="nav-link" style="cursor: pointer" ngbDropdownToggle role="button">
           Manage
         </a>
-        <div ngbDropdownMenu aria-labelledby="navbarDropdown" class="dropdown-menu">
-          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Save Data</a>
-          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Fetch Data</a>
+        <div ngbDropdownMenu class="dropdown-menu">
+          <a ngbDropdownItem href="#">Save Data</a>
+          <a ngbDropdownItem href="#">Fetch Data</a>
         </div>
       </li>
     </ul>
