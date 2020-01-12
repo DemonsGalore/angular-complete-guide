@@ -13,7 +13,7 @@
     <div ngbDropdown>
       <button class="btn btn-primary" ngbDropdownToggle>Manage Recipe</button>
       <div ngbDropdownMenu>
-        <button ngbDropdownItem>Add Ingredients</button>
+        <button ngbDropdownItem (click)="onAddToShoppingList()">Add Ingredients</button>
         <button ngbDropdownItem>Edit Recipe</button>
         <button ngbDropdownItem>Delete Recipe</button>
       </div>
@@ -27,6 +27,10 @@
 </div>
 <div class="row">
   <div class="col-12">
-    Ingredients
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.name }} - {{  ingredient.amount }}
+      </li>
+    </ul>
   </div>
 </div>
