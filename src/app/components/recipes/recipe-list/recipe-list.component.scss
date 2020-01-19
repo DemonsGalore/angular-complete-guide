@@ -1,0 +1,11 @@
+@import '../../../../theme.scss';
+
+mat-list-item {
+  height: auto !important;
+  cursor: pointer;
+  outline: none;
+}
+
+.active h4 {
+  color: mat-color($primary);
+}

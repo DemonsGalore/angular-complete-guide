@@ -1,37 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
-import { RecipeListComponent } from './components/recipes/recipe-list/recipe-list.component';
-import { RecipeItemComponent } from './components/recipes/recipe-item/recipe-item.component';
-import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
-import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './components/shopping-list/shopping-edit/shopping-edit.component';
-
-import { DropdownDirective } from './directives/dropdown.directive';
-import { RecipeService } from './services/recipe.service';
-import { ShoppingListService } from './services/shopping-list.service';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './components/layout';
+import { RecipesComponent, RecipeStartComponent, RecipeListComponent, RecipeDetailComponent, RecipeEditComponent } from './components/recipes';
+import { ShoppingListComponent } from './components/shopping-list';
+import { ShoppingEditComponent } from './components/shopping-edit';
+import { RecipeService, ShoppingListService } from './services';
+import { DropdownDirective } from './directives';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RecipesComponent,
+    RecipeStartComponent,
     RecipeListComponent,
-    RecipeItemComponent,
     RecipeDetailComponent,
+    RecipeEditComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirective
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    NgbModule,
-    FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    FontAwesomeModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent]

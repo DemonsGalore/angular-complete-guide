@@ -1,18 +1,39 @@
-import { Component, Input } from '@angular/core';
-import { Recipe } from '../../../models/recipe.model';
-import { ShoppingListService } from 'src/app/services/shopping-list.service';
-import { Ingredient } from 'src/app/models/ingredient.model';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Recipe } from '../../../models';
+import { ShoppingListService } from 'src/app/services';
+import { RecipeService } from 'src/app/services';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html'
 })
-export class RecipeDetailComponent {
-  @Input() recipe: Recipe;
+export class RecipeDetailComponent implements OnInit {
+  recipe: Recipe;
+  id: number;
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  faChevronDown = faChevronDown;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private recipeService: RecipeService,
+    private shoppingListService: ShoppingListService
+  ) {}
+
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.recipe = this.recipeService.getRecipe(this.id);
+    });
+  }
 
   onAddToShoppingList() {
     this.shoppingListService.addIngredients(this.recipe.ingredients)
+  }
+
+  onEditRecipe() {
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 }

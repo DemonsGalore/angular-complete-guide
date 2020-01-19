@@ -11,4 +11,4 @@ export class DropdownDirective {
   }
 }
 
-/* not used because of bootstrap 4 */
+// TODO: delete later; not used
