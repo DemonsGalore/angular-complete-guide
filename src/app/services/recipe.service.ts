@@ -1,4 +1,3 @@
-import { EventEmitter } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { Ingredient } from '../models/ingredient.model';
 
