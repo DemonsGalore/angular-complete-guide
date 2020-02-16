@@ -1,41 +1,24 @@
 <div>
-  <div>
-    <img [src]="recipe.imagePath" alt="{{ recipe.name }}" style="max-height: 20rem;">
-  </div>
+  <img [src]="recipe.imagePath" alt="{{ recipe.name }}" style="max-height: 20rem;">
 </div>
 <div>
-  <div>
-    <h1>{{ recipe.name }}</h1>
-  </div>
+  <h1>{{ recipe.name }}</h1>
 </div>
 <div>
-  <div>
-    <div>
-
-      <button mat-raised-button color="primary" [matMenuTriggerFor]="manageRecipeMenu">Manage Recipe&nbsp;<fa-icon [icon]="faChevronDown"></fa-icon></button>
-      <mat-menu #manageRecipeMenu="matMenu">
-        <button mat-menu-item (click)="onAddToShoppingList()">Add Ingredients</button>
-        <button mat-menu-item (click)="onEditRecipe()">Edit Recipe</button>
-        <button mat-menu-item>Delete Recipe</button>
-      </mat-menu>
-      
-
-
-
-    </div>
-  </div>
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="manageRecipeMenu">Manage Recipe&nbsp;<fa-icon [icon]="chevronDown"></fa-icon></button>
+  <mat-menu #manageRecipeMenu="matMenu">
+    <button mat-menu-item (click)="onAddToShoppingList()">Add Ingredients</button>
+    <button mat-menu-item (click)="onEditRecipe()">Edit Recipe</button>
+    <button mat-menu-item (click)="onDeleteRecipe()">Delete Recipe</button>
+  </mat-menu>
 </div>
 <div>
-  <div>
-    {{ recipe.description }}
-  </div>
+  {{ recipe.description }}
 </div>
 <div>
-  <div>
-    <ul>
-      <li *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }} - {{  ingredient.amount }}
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ ingredient.name }} - {{  ingredient.amount }}
+    </li>
+  </ul>
 </div>

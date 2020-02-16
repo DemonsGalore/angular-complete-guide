@@ -7,5 +7,5 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  faChevronDown = faChevronDown;
+  chevronDown = faChevronDown;
 }

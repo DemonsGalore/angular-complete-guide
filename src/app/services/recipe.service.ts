@@ -1,15 +1,18 @@
-import { Recipe } from '../models/recipe.model';
-import { Ingredient } from '../models/ingredient.model';
+import { Recipe } from '../models';
+import { Ingredient } from '../models';
+import { Subject } from 'rxjs';
 
 export class RecipeService {
+  recipedsChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
     new Recipe(
       'A Test Recipe',
       'Just a test',
       'https://cdn.pixabay.com/photo/2018/10/31/12/37/healthy-food-3785722_960_720.jpg',
       [
-        new Ingredient('Meat', 1),
-        new Ingredient('French Fries', 20)
+        new Ingredient('Meat', 43),
+        new Ingredient('French Fries', 14)
       ]
     ),
     new Recipe(
@@ -18,7 +21,7 @@ export class RecipeService {
       'https://cdn.pixabay.com/photo/2018/10/31/12/37/healthy-food-3785722_960_720.jpg',
       [
         new Ingredient('Meat', 2),
-        new Ingredient('French Fries', 20)
+        new Ingredient('French Fries', 4)
       ]
     ),
     new Recipe(
@@ -26,8 +29,8 @@ export class RecipeService {
       'The last test',
       'https://cdn.pixabay.com/photo/2018/10/31/12/37/healthy-food-3785722_960_720.jpg',
       [
-        new Ingredient('Meat', 3),
-        new Ingredient('French Fries', 20)
+        new Ingredient('Meat', 13),
+        new Ingredient('French Fries', 1)
       ]
     )
   ];
@@ -38,5 +41,20 @@ export class RecipeService {
 
   getRecipe(index: number) {
     return this.recipes[index];
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipedsChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipedsChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipedsChanged.next(this.recipes.slice());
   }
 }

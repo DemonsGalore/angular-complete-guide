@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input'; 
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +39,7 @@ import { DropdownDirective } from './directives';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -45,7 +47,8 @@ import { DropdownDirective } from './directives';
     MatMenuModule,
     MatDividerModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
   ],
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent]
