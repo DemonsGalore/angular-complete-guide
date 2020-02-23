@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -18,7 +19,7 @@ import { HeaderComponent } from './components/layout';
 import { RecipesComponent, RecipeStartComponent, RecipeListComponent, RecipeDetailComponent, RecipeEditComponent } from './components/recipes';
 import { ShoppingListComponent } from './components/shopping-list';
 import { ShoppingEditComponent } from './components/shopping-edit';
-import { RecipeService, ShoppingListService } from './services';
+import { RecipeService, ShoppingListService, DataStorageService, RecipeResolverService } from './services';
 import { DropdownDirective } from './directives';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { DropdownDirective } from './directives';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FontAwesomeModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -50,7 +52,12 @@ import { DropdownDirective } from './directives';
     MatCardModule,
     MatInputModule
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [
+    DataStorageService,
+    RecipeService,
+    ShoppingListService,
+    RecipeResolverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

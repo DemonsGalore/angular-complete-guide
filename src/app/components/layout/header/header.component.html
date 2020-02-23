@@ -5,8 +5,8 @@
     <button mat-button [routerLink]="['shopping-list']" routerLinkActive="active" >Shopping List</button>
     <button mat-button [matMenuTriggerFor]="manage">Manage&nbsp;<fa-icon [icon]="chevronDown"></fa-icon></button>
     <mat-menu #manage="matMenu">
-      <button mat-menu-item>Save Data</button>
-      <button mat-menu-item>Fetch Data</button>
+      <button mat-menu-item (click)="onSaveData()">Save Data</button>
+      <button mat-menu-item (click)="onFetchData()">Fetch Data</button>
     </mat-menu>
   </div>
 </mat-toolbar>
