@@ -1,5 +1,4 @@
 import { Recipe } from '../models';
-import { Ingredient } from '../models';
 import { Subject } from 'rxjs';
 
 export class RecipeService {
@@ -41,11 +40,11 @@ export class RecipeService {
     this.recipedsChanged.next(this.recipes.slice());
   }
 
-  getRecipes() {
+  getRecipes(): Recipe[] {
     return this.recipes.slice();
   }
 
-  getRecipe(index: number) {
+  getRecipe(index: number): Recipe {
     return this.recipes[index];
   }
 

@@ -5,16 +5,12 @@ export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
   private ingredients: Ingredient[] = [];
-  // private ingredients: Ingredient[] = [
-  //   new Ingredient('Apples', 5),
-  //   new Ingredient('Tomatos', 12)
-  // ];
 
-  getIngredient(index: number) {
+  getIngredient(index: number): Ingredient {
     return this.ingredients[index];
   }
 
-  getIngredients() {
+  getIngredients(): Ingredient[] {
     return this.ingredients.slice();
   }
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { RecipeService } from './recipe.service';
 import { Recipe } from '../models';
 import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class DataStorageService {
@@ -21,7 +22,7 @@ export class DataStorageService {
     });
   }
 
-  fetchRecipes() {
+  fetchRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>('https://react-skeleton-app-d64b0.firebaseio.com/recipes.json')
       .pipe(
         map(recipes => {
