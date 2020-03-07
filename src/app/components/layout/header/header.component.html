@@ -1,12 +1,17 @@
 <mat-toolbar fxLayoutAlign="space-between center">
   <h1 [routerLink]="['']">Recipes</h1>
   <div>
-    <button mat-button [routerLink]="['recipes']" routerLinkActive="active" >Recipes</button>
-    <button mat-button [routerLink]="['shopping-list']" routerLinkActive="active" >Shopping List</button>
-    <button mat-button [matMenuTriggerFor]="manage">Manage&nbsp;<fa-icon [icon]="chevronDown"></fa-icon></button>
-    <mat-menu #manage="matMenu">
-      <button mat-menu-item (click)="onSaveData()">Save Data</button>
-      <button mat-menu-item (click)="onFetchData()">Fetch Data</button>
-    </mat-menu>
+    <button mat-button *ngIf="!isAuthenticated" [routerLink]="['auth']" routerLinkActive="active">Authenticate</button>
+
+    <ng-container *ngIf="isAuthenticated">
+      <button mat-button [routerLink]="['recipes']" routerLinkActive="active">Recipes</button>
+      <button mat-button [routerLink]="['shopping-list']" routerLinkActive="active">Shopping List</button>
+      <button mat-button [matMenuTriggerFor]="manage">Manage&nbsp;<fa-icon [icon]="chevronDown"></fa-icon></button>
+      <mat-menu #manage="matMenu">
+        <button mat-menu-item (click)="onSaveData()">Save Data</button>
+        <button mat-menu-item (click)="onFetchData()">Fetch Data</button>
+      </mat-menu>
+      <button mat-button (click)="onSignOut()">Logout</button>
+    </ng-container>
   </div>
 </mat-toolbar>

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -12,6 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,11 +22,13 @@ import { ShoppingListComponent } from './components/shopping-list';
 import { ShoppingEditComponent } from './components/shopping-edit';
 import { RecipeService, ShoppingListService, DataStorageService, RecipeResolverService } from './services';
 import { DropdownDirective } from './directives';
+import { AuthComponent, AuthInterceptorService, AuthGuard, AuthService } from './auth';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    AuthComponent,
     RecipesComponent,
     RecipeStartComponent,
     RecipeListComponent,
@@ -50,14 +53,22 @@ import { DropdownDirective } from './directives';
     MatDividerModule,
     MatListModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     DataStorageService,
     RecipeService,
     ShoppingListService,
-    RecipeResolverService
+    RecipeResolverService,
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

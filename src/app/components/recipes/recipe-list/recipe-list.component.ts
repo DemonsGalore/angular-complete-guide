@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
-  subscription: Subscription;
+  recipesChangedSubscription: Subscription;
 
   constructor(
     private recipeService: RecipeService,
@@ -20,14 +20,14 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipedsChanged.subscribe((recipes: Recipe[]) => {
+    this.recipesChangedSubscription = this.recipeService.recipedsChanged.subscribe(recipes => {
       this.recipes = recipes;
     })
     this.recipes = this.recipeService.getRecipes();
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.recipesChangedSubscription.unsubscribe();
   }
 
   onNewRecipe() {
