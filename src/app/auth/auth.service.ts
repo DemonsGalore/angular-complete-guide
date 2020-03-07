@@ -8,7 +8,7 @@ import { AuthResponseData, User } from './models';
 @Injectable()
 export class AuthService {
   user = new BehaviorSubject<User>(null);
-  private tokenExpirationTimer: NodeJS.Timeout;
+  private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
