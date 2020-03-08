@@ -4,6 +4,8 @@ import { AuthService } from './auth.service';
 import { AuthResponseData } from './models';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../services';
+import { StatusType } from '../models';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +18,11 @@ export class AuthComponent implements OnInit {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private snackBarService: SnackbarService
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -50,21 +56,21 @@ export class AuthComponent implements OnInit {
     }
 
     authObservable.subscribe(
-      (response: AuthResponseData) => {
-        console.log(response);
+      () => {
         this.isLoading = false;
         this.router.navigate(['/recipes']);
       },
       (errorMessage: string) => {
         this.error = errorMessage;
         this.isLoading = false;
+        this.snackBarService.displaySnackBar(errorMessage, StatusType.ERROR);
       }
     );
 
     this.authForm.reset();
   }
 
-  onHandleError() {
-    this.error = null;
-  }
+  // onHandleError() {
+  //   this.error = null;
+  // }
 }

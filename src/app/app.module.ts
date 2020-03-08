@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,7 @@ import { HeaderComponent } from './components/layout';
 import { RecipesComponent, RecipeStartComponent, RecipeListComponent, RecipeDetailComponent, RecipeEditComponent } from './components/recipes';
 import { ShoppingListComponent } from './components/shopping-list';
 import { ShoppingEditComponent } from './components/shopping-edit';
-import { RecipeService, ShoppingListService, DataStorageService, RecipeResolverService } from './services';
+import { RecipeService, ShoppingListService, DataStorageService, RecipeResolverService, SnackbarService } from './services';
 import { DropdownDirective } from './directives';
 import { AuthComponent, AuthInterceptorService, AuthGuard, AuthService } from './auth';
 import { AlertComponent } from './shared/alert';
@@ -56,13 +57,15 @@ import { AlertComponent } from './shared/alert';
     MatListModule,
     MatCardModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [
     DataStorageService,
     RecipeService,
     ShoppingListService,
     RecipeResolverService,
+    SnackbarService,
     AuthService,
     AuthGuard,
     {
