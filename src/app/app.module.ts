@@ -23,6 +23,7 @@ import { ShoppingEditComponent } from './components/shopping-edit';
 import { RecipeService, ShoppingListService, DataStorageService, RecipeResolverService } from './services';
 import { DropdownDirective } from './directives';
 import { AuthComponent, AuthInterceptorService, AuthGuard, AuthService } from './auth';
+import { AlertComponent } from './shared/alert';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AuthComponent, AuthInterceptorService, AuthGuard, AuthService } from '.
     RecipeEditComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
+    AlertComponent,
     DropdownDirective
   ],
   imports: [
