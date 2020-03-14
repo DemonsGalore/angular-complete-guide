@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ShoppingListRoutingModule } from './shopping-list-routing.module';
@@ -19,7 +19,6 @@ import { MatInputModule } from '@angular/material/input';
     RouterModule,
     ShoppingListRoutingModule,
     CommonModule,
-    ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
     FlexLayoutModule,

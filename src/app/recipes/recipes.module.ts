@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,7 +26,6 @@ import { RecipesComponent, RecipeStartComponent, RecipeListComponent, RecipeDeta
     RecipesRoutingModule,
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
     FontAwesomeModule,
     FlexLayoutModule,
     MatButtonModule,
