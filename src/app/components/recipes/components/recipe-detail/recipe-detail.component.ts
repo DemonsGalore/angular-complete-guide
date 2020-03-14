@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Recipe } from '../../../models';
 import { ShoppingListService } from 'src/app/services';
 import { RecipeService } from 'src/app/services';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Recipe } from 'src/app/models';
 
 @Component({
   selector: 'app-recipe-detail',
