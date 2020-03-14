@@ -18,21 +18,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/layout';
-import { ShoppingListComponent } from './components/shopping-list';
-import { ShoppingEditComponent } from './components/shopping-edit';
 import { RecipeService, ShoppingListService, DataStorageService, RecipeResolverService, SnackbarService } from './services';
 import { DropdownDirective } from './directives';
 import { AuthComponent, AuthInterceptorService, AuthGuard, AuthService } from './auth';
 import { AlertComponent } from './shared/alert';
-import { RecipesModule } from './components/recipes/recipes.module';
+import { RecipesModule } from './recipes/recipes.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AuthComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     AlertComponent,
     DropdownDirective
   ],
@@ -48,13 +45,11 @@ import { RecipesModule } from './components/recipes/recipes.module';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    MatDividerModule,
-    MatListModule,
-    MatCardModule,
     MatInputModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    RecipesModule
+    RecipesModule,
+    ShoppingListModule
   ],
   providers: [
     DataStorageService,
