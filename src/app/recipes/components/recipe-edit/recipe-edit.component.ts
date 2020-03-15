@@ -13,6 +13,10 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
 
+  get ingredientControls() {
+    return (this.recipeForm.get('ingredients') as FormArray).controls;
+  }
+
   times = faTimes;
 
   constructor(
