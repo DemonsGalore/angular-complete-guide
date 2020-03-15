@@ -7,9 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptorService } from '../auth';
 import { HeaderComponent } from './components/header';
 import { RecipeService, ShoppingListService } from '../services';
+import { AuthInterceptorService } from '../auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
