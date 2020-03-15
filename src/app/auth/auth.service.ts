@@ -5,7 +5,7 @@ import { throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthResponseData, User } from './models';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;

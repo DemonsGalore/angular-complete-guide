@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,7 +24,7 @@ import { RecipesComponent, RecipeStartComponent, RecipeListComponent, RecipeDeta
   imports: [
     RouterModule,
     RecipesRoutingModule,
-    CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     FontAwesomeModule,
     FlexLayoutModule,

@@ -5,7 +5,7 @@ import { Recipe } from '../models';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DataStorageService {
   constructor(
     private http: HttpClient,
