@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+
 import { AuthService } from 'app/auth/auth.service';
 import { DataStorageService } from 'app/services';
+import * as fromApp from 'app/store/app.reducer';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +18,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   chevronDown = faChevronDown;
 
-  constructor(private dataStorageService: DataStorageService, private authService: AuthService) {}
+  constructor(
+    private store: Store<fromApp.ApplicationState>,
+    private authService: AuthService,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit() {
-    this.userSubscription = this.authService.user.subscribe(user => {
-      this.isAuthenticated = !!user;
+    this.userSubscription = this.store.select('auth').subscribe(state => {
+      this.isAuthenticated = !!state.user;
     });
   }
 
