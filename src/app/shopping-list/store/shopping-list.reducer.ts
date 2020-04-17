@@ -1,9 +1,5 @@
-import { Ingredient } from '../models';
+import { Ingredient } from '../../models';
 import { ShoppingListActions, ADD_INGREDIENT, ADD_INGREDIENTS, UPDATE_INGREDIENT, DELETE_INGREDIENT, START_EDIT, STOP_EDIT } from './shopping-list.actions';
-
-export interface ApplicationState {
-  shoppingList: ShoppingListState;
-}
 
 export interface ShoppingListState {
   ingredients: Ingredient[];

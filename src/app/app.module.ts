@@ -8,8 +8,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { shoppingListReducer } from './shopping-list/shopping-list.reducer';
-
+import * as fromApp from './store/app.reducer';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +18,7 @@ import { shoppingListReducer } from './shopping-list/shopping-list.reducer';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
+    StoreModule.forRoot(fromApp.appReducer),
     MatSnackBarModule,
     CoreModule
   ],
