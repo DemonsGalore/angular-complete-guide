@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
-import { DataStorageService } from 'src/app/services';
+import { AuthService } from 'app/auth/auth.service';
+import { DataStorageService } from 'app/services';
 
 @Component({
   selector: 'app-header',

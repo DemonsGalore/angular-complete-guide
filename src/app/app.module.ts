@@ -19,7 +19,7 @@ import { shoppingListReducer } from './shopping-list/shopping-list.reducer';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducer}),
+    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
     MatSnackBarModule,
     CoreModule
   ],

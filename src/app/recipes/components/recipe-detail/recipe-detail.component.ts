@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ShoppingListService } from 'src/app/services';
-import { RecipeService } from 'src/app/services';
+import { Store } from '@ngrx/store';
+import { RecipeService } from 'app/services';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Recipe } from 'src/app/models';
+import { Recipe } from 'app/models';
+import * as ShoppingListActions from '../../../shopping-list/shopping-list.actions';
+import * as fromShoppingList from '../../../shopping-list/shopping-list.reducer';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -19,7 +21,7 @@ export class RecipeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private recipeService: RecipeService,
-    private shoppingListService: ShoppingListService
+    private store: Store<fromShoppingList.ApplicationState>
   ) {}
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onAddToShoppingList() {
-    this.shoppingListService.addIngredients(this.recipe.ingredients)
+    this.store.dispatch(new ShoppingListActions.AddIngredientsAction(this.recipe.ingredients));
   }
 
   onEditRecipe() {

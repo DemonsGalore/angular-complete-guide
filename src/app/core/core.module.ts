@@ -8,7 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './components/header';
-import { RecipeService, ShoppingListService } from '../services';
+import { RecipeService } from '../services';
 import { AuthInterceptorService } from '../auth/auth-interceptor.service';
 
 @NgModule({
@@ -29,7 +29,6 @@ import { AuthInterceptorService } from '../auth/auth-interceptor.service';
   ],
   providers: [
     RecipeService,
-    ShoppingListService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
