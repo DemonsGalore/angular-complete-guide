@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-import { AuthService } from 'app/auth/auth.service';
 import { DataStorageService } from 'app/services';
 import * as fromApp from 'app/store/app.reducer';
+import * as AuthActions from 'app/auth/store/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromApp.ApplicationState>,
-    private authService: AuthService,
     private dataStorageService: DataStorageService
   ) {}
 
@@ -43,6 +42,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSignOut() {
-    this.authService.signOut();
+    this.store.dispatch(new AuthActions.SignOut());
   }
 }

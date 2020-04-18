@@ -1,31 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from './auth.service';
-import { AuthResponseData } from './models';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { SnackbarService } from '../services';
-import { StatusType } from '../models';
+import { Store } from '@ngrx/store';
+
+import * as fromApp from 'app/store/app.reducer';
+import * as AuthActions from './store/auth.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
   authForm: FormGroup;
   isSignUpMode = true;
   isLoading = false;
-  error: string = null;
+  private storeSubscription: Subscription;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private snackBarService: SnackbarService
-  ) {}
+  constructor(private store: Store<fromApp.ApplicationState>) {}
 
   ngOnInit() {
     this.initForm();
+
+    this.storeSubscription = this.store.select('auth').subscribe(authState => {
+      this.isLoading = authState.loading;
+    });
   }
 
   private initForm() {
@@ -42,35 +41,19 @@ export class AuthComponent implements OnInit {
   onSubmit() {
     if (this.authForm.invalid) return;
 
-    this.isLoading = true;
-
     const email = this.authForm.value.email;
     const password = this.authForm.value.password;
 
-    let authObservable: Observable<AuthResponseData>;
-
     if (this.isSignUpMode) {
-      authObservable = this.authService.signUp(email, password);
+      this.store.dispatch(new AuthActions.SignUp({ email, password }));
     } else {
-      authObservable = this.authService.signIn(email, password);
+      this.store.dispatch(new AuthActions.SignIn({ email, password }));
     }
-
-    authObservable.subscribe(
-      () => {
-        this.isLoading = false;
-        this.router.navigate(['/recipes']);
-      },
-      (errorMessage: string) => {
-        this.error = errorMessage;
-        this.isLoading = false;
-        this.snackBarService.displaySnackBar(errorMessage, StatusType.ERROR);
-      }
-    );
 
     this.authForm.reset();
   }
 
-  // onHandleError() {
-  //   this.error = null;
-  // }
+  ngOnDestroy() {
+    this.storeSubscription.unsubscribe();
+  }
 }
